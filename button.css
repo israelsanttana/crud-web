@@ -1,0 +1,26 @@
+.button {
+  border-style: none;
+  height: 40px;
+  padding: 6px 12px;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.button.register {
+  background-color: #159a9c;
+}
+
+.button:hover {
+  box-shadow: inset 200px 0 0 #00000055;
+}
+
+.button.edit {
+  background-color: #02a676;
+}
+
+.button.delet {
+  background-color: #bd2a2e;
+}
