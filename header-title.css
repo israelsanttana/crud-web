@@ -3,3 +3,8 @@
   font-size: 2rem;
   font-weight: 200;
 }
+
+.modal-content h2 {
+  color: #fff;
+  font-weight: 200;
+}
