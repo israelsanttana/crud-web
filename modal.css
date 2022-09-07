@@ -9,7 +9,7 @@
   z-index: -1;
 }
 
-.modal .active {
+.modal.active {
   opacity: 1;
   z-index: 1;
 }
