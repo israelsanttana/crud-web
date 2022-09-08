@@ -7,10 +7,11 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  font-family: "karla", sans-serif;
+  font-family: 'karla', sans-serif;
 }
 
 header {
+  flex-wrap: wrap;
   background-color: #002333;
   height: 70px;
   text-align: center;
@@ -30,6 +31,7 @@ main {
   gap: 20px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 3px;
+  overflow: scroll;
 }
 
 footer {
