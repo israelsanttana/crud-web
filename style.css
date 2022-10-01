@@ -41,3 +41,18 @@ footer {
   font-style: italic;
   padding: 20px;
 }
+
+@media (max-width: 480px) {
+  .header {
+    position: fixed;
+  }
+  .header-title {
+    font-size: 1.5rem;
+  }
+  .main {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    box-shadow: none;
+  }
+}
