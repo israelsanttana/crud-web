@@ -20,15 +20,27 @@ modalClose.addEventListener('click', function () {
 });
 
 const tempClient = {
-    nome: 'Israel',
+    nome: 'Nicolas',
     email: 'israelsantana@gmail.com',
     celular: '(41) 98904-2299',
     cidade: 'Curitiba'
 
 }
 
+
 const getLocalStorage = () => JSON.parse(localStorage.getItem('db_client')) ?? [];
 const setLocalStorage = (dbClient) => localStorage.setItem("db_client", JSON.stringify(dbClient));
+
+const deleteClient = (index) => {
+    const dbClient = readClient()
+    dbClient.splice(index, 1)
+}
+
+const updateClient = (index, client) => {
+    const dbClient = readClient();
+    dbClient[index] = client;
+    setLocalStorage(dbClient);
+}
 
 const readClient = () => getLocalStorage()
 
