@@ -7,6 +7,7 @@ function startModal(modal) {
 function closeModal(modal) {
     const getModal = document.getElementById('modal');
     getModal.classList.remove('active');
+    clearFields();
 }
 
 const openModal = document.querySelector('#client');
@@ -56,9 +57,22 @@ const isValidField = () => {
 
 }
 
+const clearFields = () => {
+    const fields = document.querySelectorAll('.modal-field');
+    fields.forEach(field => field.value = "");
+}
+
 const saveClient = () => {
     if (isValidField()) {
-        console.log('cadastrando client')
+        const client = {
+            nome: document.getElementById('nome').value,
+            email: document.getElementById('email').value,
+            telefone: document.getElementById('telefone').value,
+            cidade: document.getElementById('cidade').value
+        }
+        createClient(client);
+        closeModal();
+
     }
 }
 
