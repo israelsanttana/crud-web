@@ -49,9 +49,23 @@ const createClient = (client) => {
     const dbClient = getLocalStorage();
     dbClient.push(client);
     setLocalStorage(dbClient)
+}
 
+const isValidField = () => {
+    return document.getElementById('form').reportValidity();
 
 }
+
+const saveClient = () => {
+    if (isValidField()) {
+        console.log('cadastrando client')
+    }
+}
+
+
+
+document.getElementById('save')
+    .addEventListener('click', saveClient)
 
 
 
