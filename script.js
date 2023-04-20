@@ -20,6 +20,10 @@ modalClose.addEventListener('click', function () {
     closeModal('modal');
 });
 
+const updateTable = () => {
+    const dbClient = readClient()
+    dbClient.forEach(createRow)
+}
 
 const tempClient = {
     nome: 'Nicolas',
