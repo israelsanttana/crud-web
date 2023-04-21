@@ -15,22 +15,6 @@ client.addEventListener('click', function () {
     startModal('modal');
 });
 
-const noneModal = document.querySelector('#modalClose');
-modalClose.addEventListener('click', function () {
-    closeModal('modal');
-});
-
-const updateTable = () => {
-    const dbClient = readClient()
-    dbClient.forEach(createRow)
-}
-
-const tempClient = {
-    nome: 'Nicolas',
-    email: 'israelsantana@gmail.com',
-    celular: '(41) 98904-2299',
-    cidade: 'Curitiba'
-}
 
 
 const getLocalStorage = () => JSON.parse(localStorage.getItem('db_client')) ?? [];
@@ -75,6 +59,7 @@ const saveClient = () => {
             cidade: document.getElementById('cidade').value
         }
         createClient(client);
+        updateTable();
         closeModal();
 
     }
@@ -85,6 +70,37 @@ const saveClient = () => {
 document.getElementById('save')
     .addEventListener('click', saveClient)
 
+const noneModal = document.querySelector('#modalClose');
+modalClose.addEventListener('click', function () {
+    closeModal('modal');
+});
+
+const createRow = (client) => {
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+        <td>${client.nome}</td>
+        <td>${client.email}</td>
+        <td>${client.telefone}</td>
+        <td>${client.cidade}</td>
+        <td>
+          <button type="button" class="button edit">Editar</button>
+          <button type="button" class="button delet">Excluir</button>
+        </td>
+        `
+    document.querySelector('#tableClient>tbody').appendChild(newRow)
 
 
+}
 
+const clearTable = () => {
+    const rows = document.querySelectorAll('#tableClient>tbody tr')
+    rows.forEach(row => row.parentNode.removeChild(row))
+}
+
+const updateTable = () => {
+    const dbClient = readClient()
+    clearTable()
+    dbClient.forEach(createRow)
+}
+
+updateTable()
