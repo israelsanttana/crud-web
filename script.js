@@ -75,7 +75,7 @@ modalClose.addEventListener('click', function () {
     closeModal('modal');
 });
 
-const createRow = (client) => {
+const createRow = (client, index) => {
     const newRow = document.createElement('tr');
     newRow.innerHTML = `
         <td>${client.nome}</td>
@@ -83,8 +83,8 @@ const createRow = (client) => {
         <td>${client.telefone}</td>
         <td>${client.cidade}</td>
         <td>
-          <button type="button" class="button edit">Editar</button>
-          <button type="button" class="button delet">Excluir</button>
+          <button type="button" class="button edit" id="edit-${index}">Editar</button>
+          <button type="button" class="button delet" id="delete-${index}">Excluir</button>
         </td>
         `
     document.querySelector('#tableClient>tbody').appendChild(newRow)
@@ -103,4 +103,38 @@ const updateTable = () => {
     dbClient.forEach(createRow)
 }
 
+const fillFields = (client) => {
+    document.getElementById('nome').value = client.nome;
+    document.getElementById('email').value = client.email;
+    document.getElementById('telefone').value = client.telefone;
+    document.getElementById('cidade').value = client.cidade;
+
+}
+
+const editClient = (index) => {
+    const client = readClient()[index]
+    fillFields(client)
+    startModal()
+}
+
+
+const editDelete = (event) => {
+    if (event.target.type === 'button') {
+        const [action, index] = event.target.id.split('-');
+
+        if (action === 'edit') {
+            editClient(index)
+        } else {
+            console.log('deletando')
+
+        }
+
+    }
+
+
+}
+
 updateTable()
+
+document.querySelector('#tableClient>tbody')
+    .addEventListener('click', editDelete)
